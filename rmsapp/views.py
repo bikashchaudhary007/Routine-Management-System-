@@ -55,17 +55,33 @@ def logoutUser(request):
 def student(request):
     return render(request, 'student.html')
 
+#Creating course view
 def course(request):
     form = CreateCourseForm()
     if request.method=='POST':
         form = CreateCourseForm(request.POST)
         if form.is_valid():
             form.save()
-
+            return redirect('course')
     courses = Course.objects.all() 
     context={'form': form,'courses': courses}
     return render(request, 'dashboard/course.html', context )
 
+#Creating updateCourse view
+def updateCourse(request,pk):
+    course = Course.objects.get(id=pk)
+    form = CreateCourseForm(instance=course)
+    if request.method=='POST':
+        form = CreateCourseForm(request.POST, instance=course)
+        if form.is_valid():
+            form.save()
+            return redirect('course')
+
+    courses = Course.objects.filter(id=pk)
+    context={'form': form,'courses': courses}
+    return render(request, 'dashboard/course.html', context )
+
+#Creating units views
 def units(request):
     form = CreateUnitForm()
     if request.method=='POST':
@@ -79,14 +95,44 @@ def units(request):
     context={'form': form, 'units': units} 
     return render(request, 'dashboard/units.html',context)
 
+#Creating updateUnits view
+def updateUnits(request,pk):
+    unit = Unit.objects.get(id=pk)
+    form = CreateUnitForm(instance=unit)
+    if request.method=='POST':
+        form = CreateUnitForm(request.POST,instance=unit)
+        if form.is_valid():
+            form.save()  
+            return redirect('units')
+    
+    units = Unit.objects.filter(id=pk)
+    context={'form': form, 'units': units} 
+    return render(request, 'dashboard/units.html',context)
+
+#Creating Academic Year View
 def Year(request):
     form = AcademicYearForm()
     if request.method == 'POST':
         form = AcademicYearForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('academicYear')
     
     years = academicYear.objects.all() 
+    context={'form': form, 'years':years}
+    return render(request, 'dashboard/academicYear.html', context)
+
+#Creating updateYear view
+def updateYear(request,pk):
+    year = academicYear.objects.get(id=pk)
+    form = AcademicYearForm(instance=year)
+    if request.method == 'POST':
+        form = AcademicYearForm(request.POST, instance=year)
+        if form.is_valid():
+            form.save()
+            return redirect('academicYear')
+    
+    years = academicYear.objects.filter(id=pk) 
     context={'form': form, 'years':years}
     return render(request, 'dashboard/academicYear.html', context)
 
@@ -135,6 +181,20 @@ def routine(request):
             form.save()
     
     routines = Routine.objects.all() 
+    context={'form': form, 'routines':routines}
+    return render(request, 'dashboard/routine.html', context)
+
+#Creating updateRoutine view
+def updateRoutine(request,pk):
+    routine = Routine.objects.get(id=pk) 
+    form = CreateRoutineForm(instance=routine)
+    if request.method == 'POST':
+        form = CreateRoutineForm(request.POST,instance=routine)
+        if form.is_valid():
+            form.save()
+            return redirect('routine')
+    
+    routines = Routine.objects.filter(id=pk)
     context={'form': form, 'routines':routines}
     return render(request, 'dashboard/routine.html', context)
 

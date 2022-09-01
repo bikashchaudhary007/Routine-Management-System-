@@ -79,6 +79,7 @@
       <th scope="col">Level</th>
       <th scope="col">Semester</th>
       <th scope="col">Academic Year</th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -93,6 +94,7 @@
       <td>{{routine.level}}</td>
       <td>{{routine.semester}}</td>
       <td>{{routine.year}}</td>
+      <td><a class="btn btn-sm btn-info"  href="{% url 'update_routine' routine.id %}">Edit</a></td> 
     </tr>
     {% endfor %}
   </tbody>

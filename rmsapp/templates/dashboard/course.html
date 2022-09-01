@@ -49,6 +49,7 @@
       {% comment %} <th scope="col">#</th> {% endcomment %}
       <th scope="col">Course Code</th>
       <th scope="col">Course</th>
+      <th scope="col">Update</th>
     </tr>
   </thead>
   <tbody>
@@ -57,6 +58,7 @@
     <tr>
       <th scope="row">{{course.courseCode}}</th>
       <td>{{course.courseName}}</td>
+      <td><a class="btn btn-sm btn-info"  href="{% url 'update_course' course.id %}">Update</a></td> 
     </tr>
     {% endfor %}
   </tbody>

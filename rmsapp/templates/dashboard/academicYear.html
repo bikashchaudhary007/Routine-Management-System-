@@ -42,12 +42,14 @@
   <thead>
     <tr>
       <th scope="col">Academic Year</th>
+      <th scope="col">Update</th>
     </tr>
   </thead>
   <tbody>
     {% for year in years%}
     <tr>
       <td>{{year.year}}</td>
+      <td><a class="btn btn-sm btn-info"  href="{% url 'update_year' year.id %}">Update</a></td> 
     {% endfor %} 
     </tr>
   </tbody>
