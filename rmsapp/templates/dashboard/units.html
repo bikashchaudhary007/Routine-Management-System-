@@ -1,0 +1,85 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% block web_content %}
+
+<h1 class="h3 mb-0 text-gray-800">Units</h1>
+
+<!-- Modal -->
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Units</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--forms-->
+        <form action="" method="POST">
+          {% csrf_token %}
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Unit Code</label>
+          {% comment %} <input type="text" class="form-control" id="formGroupExampleInput" name="unitCode" placeholder="CIS016-1"> {% endcomment %}
+          {{form.unitCode}}
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Level</label>
+          {% comment %} <input type="text" class="form-control" id="formGroupExampleInput2" name="unitLevel" placeholder="4,5,6"> {% endcomment %}
+          {{form.unitLevel}}
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Credits</label>
+          {% comment %} <input type="text" class="form-control" id="formGroupExampleInput2" name="unitCredits" placeholder="..."> {% endcomment %}
+          {{form.unitCredits}}
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Unit Name</label>
+          {% comment %} <input type="text" class="form-control" id="formGroupExampleInput2" name="unitName" placeholder="OOP..."> {% endcomment %}
+          {{form.unitName}}
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Course</label>
+          {% comment %} <input type="text" class="form-control" id="formGroupExampleInput2" name="course" placeholder="BSc..."> {% endcomment %}
+          {{form.course}}
+        </div>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 text-right">
+    <button class="btn btn-success badge-pill" data-bs-toggle="modal" data-bs-target="#add"
+      style="width: 80px; margin-right:20px;">ADD</button>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Unit Code</th>
+      <th scope="col">Level</th>
+      <th scope="col">Credits</th>
+      <th scope="col">Unit Name</th>
+      <th scope="col">Course</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for unit in units%}
+   <tr>
+   <th scope="row"> {{unit.unitCode}}</th>
+      <td>{{unit.unitLevel}}</td>
+      <td>{{unit.unitCredits}}</td>
+      <td>{{unit.unitName}}</td>
+      <td>{{unit.course}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock web_content %}
