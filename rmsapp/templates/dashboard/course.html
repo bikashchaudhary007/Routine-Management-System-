@@ -18,7 +18,7 @@
           {% csrf_token %}
         <div class="mb-3">
           <label for="formGroupExampleInput" class="form-label">Course Code</label>
-          {% comment %} <input type="text" class="form-control" id="formGroupExampleInput" name="courseCode" placeholder="CS104"> {% endcomment %}
+          {% comment %} <input type="text" class="form-control" id="formGroupExampleInput" name="courseCode" value="{{}}" placeholder="CS104"> {% endcomment %}
           {{form.courseCode}}
         </div>
         <div class="mb-3">

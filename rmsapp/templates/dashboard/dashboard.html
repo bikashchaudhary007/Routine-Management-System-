@@ -68,7 +68,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item" href="{% url 'routine' %}">Routine</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
+                        <a class="collapse-item" href="{% url 'student_details' %}">Student Details</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
@@ -330,7 +330,7 @@
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 {% comment %} <a class="dropdown-item" href="{% url 'home' %}" data-toggle="modal" data-target="#logoutModal"> {% endcomment %}
-                                    <a class="dropdown-item" href="{% url 'home' %}">
+                                    <a class="dropdown-item" href="{% url 'logout' %}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

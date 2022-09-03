@@ -1,3 +1,4 @@
+{% comment %} This is the student page where login student can see this page {% endcomment %}
 {% load static  %}
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +47,40 @@
         </header>
 
         <center><h1>Class Routine</h1></center>
+
+        <table class="table">
+          <thead>
+            <tr>
+              {% comment %} <th scope="col">#</th> {% endcomment %}
+              <th scope="col">Weekdays</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End Time</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Teacher</th>
+              <th scope="col">Level</th>
+              <th scope="col">Semester</th>
+              <th scope="col">Academic Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            {% for routine in routines%}
+            <tr>
+              <th scope="row">{{routine.weekdays}}</th>
+              <td>{{routine.startTime}}</td>
+              <td>{{routine.endTime}}</td>
+              <td>{{routine.unit}}</td>
+              <td>{{routine.teacher}}</td>
+              <td>{{routine.level}}</td>
+              <td>{{routine.semester}}</td>
+              <td>{{routine.year}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+{% comment %}         
+        <br>
         <table class="table table-hover">
             <thead class="table-secondary">
               <tr>
@@ -93,7 +128,7 @@
                 <td>Database <br> (Ajaya)</td>
               </tr>
             </tbody>
-          </table>
+          </table>  {% endcomment %}
        
         <!-- Footer-->
         <footer class="py-5 bg-black">

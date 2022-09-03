@@ -30,6 +30,11 @@ class CreateTeacherForm(forms.ModelForm):
         model = Teacher
         fields = '__all__'
 
+class CreateStudentFrom(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = '__all__'
+
 class CreateRoutineForm(forms.ModelForm):
     class Meta:
         model = Routine

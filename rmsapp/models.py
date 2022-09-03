@@ -1,6 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
+
+
+
+
+#Create staff model
+
+
 
 #Creating model for course
 class Course(models.Model):
@@ -50,7 +58,35 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.teacherName
-        
+
+#Create student model 
+class Student(models.Model):
+    level = (
+        ('4','4'),
+        ('5','5'),
+        ('6','6'),
+    )
+    sem = (
+        ('I','I'),
+        ('II','II'),
+        ('III','III'),
+        ('IV','IV'),
+        ('V','V'),
+        ('VI','VI'),
+    )
+    name = models.CharField(max_length=200, null= True)
+    email = models.CharField(max_length=200, null= True)
+    address = models.CharField(max_length=200, null= True)
+    year = models.ForeignKey(academicYear, null=True,blank=True ,on_delete= models.SET_NULL) #Academic Year ID (FK)
+    level = models.CharField(max_length=50, null=True, choices=level)
+    semester = models.CharField(max_length=50, null=True, choices=sem)
+    user = models.ForeignKey(User, null=True, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+
 class Routine(models.Model):
     days = (
         ('Sun','Sun'),
